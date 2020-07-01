@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://weapons/raw_assets/fireball_sprite.png" type="Texture" id=1]
+[ext_resource path="res://weapons/Fireball.gd" type="Script" id=2]
+[ext_resource path="res://effects/raw_assets/circle32.png" type="Texture" id=3]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "flicker"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.474074, 0.992593 )
+colors = PoolColorArray( 0.237305, 0.237305, 0.237305, 1, 0.678711, 0.678711, 0.678711, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0.481818 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.797727 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3( 0, 5, 0 )
+scale = 0.1
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+
+[sub_resource type="QuadMesh" id=9]
+
+[node name="Fireball" type="KinematicBody"]
+collision_mask = 5
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.291896, 0, 0, 0, 0.291896, 0, 0, 0, 0.291896, 0, 0, -0.665633 )
+shape = SubResource( 1 )
+
+[node name="Graphics" type="Spatial" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Graphics"]
+transform = Transform( 2.01318, 0, 0, 0, 2.01318, 0, 0, 0, 2.01318, 0, 0, 0 )
+billboard = 1
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/Sprite3D"]
+autoplay = "flicker"
+anims/flicker = SubResource( 2 )
+
+[node name="DestroyAfterHitTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ShowAfterTimer" type="Timer" parent="."]
+wait_time = 0.01
+one_shot = true
+autostart = true
+
+[node name="SmokeParticles" type="Particles" parent="."]
+material_override = SubResource( 3 )
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 9 )
+
+[node name="DestroyAfterMissTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="DestroyAfterHitTimer" to="." method="queue_free"]
+[connection signal="timeout" from="ShowAfterTimer" to="." method="show"]
+[connection signal="timeout" from="DestroyAfterMissTimer" to="." method="queue_free"]
