@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/knife_fire.wav-6a5b74931d2b14a5005f97de9730793b.sample"
+
+[deps]
+
+source_file="res://sfx/knife_fire.wav"
+dest_files=[ "res://.import/knife_fire.wav-6a5b74931d2b14a5005f97de9730793b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

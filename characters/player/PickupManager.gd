@@ -14,5 +14,5 @@ func _ready():
 func on_area_entered(pickup: Pickup):
 	if pickup.pickup_type == Pickup.PickupType.HEALTH and _current_player_health == max_player_health:
 		return
-	emit_signal('got_pickup', pickup.pickup_type, pickup.ammount)
+	emit_signal('got_pickup', pickup.pickup_type, pickup.amount)
 	pickup.queue_free()

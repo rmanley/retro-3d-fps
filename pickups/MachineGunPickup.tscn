@@ -38,7 +38,7 @@ tracks/1/keys = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 8
 script = ExtResource( 2 )
-ammo = 30
+amount = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

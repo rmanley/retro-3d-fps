@@ -39,7 +39,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 8
 script = ExtResource( 2 )
 pickup_type = 2
-ammo = 20
+amount = 20
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

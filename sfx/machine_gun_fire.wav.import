@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/machine_gun_fire.wav-5f95022cf2ceaa7f998c1b651f4b8937.sample"
+
+[deps]
+
+source_file="res://sfx/machine_gun_fire.wav"
+dest_files=[ "res://.import/machine_gun_fire.wav-5f95022cf2ceaa7f998c1b651f4b8937.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -56,13 +56,13 @@ transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819,
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 16.5246, 1, 0 )
 
 [node name="BirdMonster3" parent="Navigation" instance=ExtResource( 6 )]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 1.79504, 1, 26.5978 )
+transform = Transform( -1.57048, 0, 5.86112, 0, 6.06788, 0, -5.86112, 0, -1.57048, 1.79504, 1, 26.5978 )
 
 [node name="BirdMonster4" parent="Navigation" instance=ExtResource( 6 )]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 8.51575, 1, -30.93 )
+transform = Transform( -0.0955631, 0, 0.356646, 0, 0.369227, 0, -0.356646, 0, -0.0955631, 8.51575, 1, -30.93 )
 
 [node name="ReptileMonster" parent="Navigation" instance=ExtResource( 7 )]
-transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 17.5859, 1, 25.7473 )
+transform = Transform( -6.59731, 0, 3.80896, 0, 7.61792, 0, -3.80896, 0, -6.59731, 17.5859, 1, 25.7473 )
 
 [node name="Environment" type="Spatial" parent="."]
 __meta__ = {
