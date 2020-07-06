@@ -1,5 +1,7 @@
 extends KinematicBody
 
+onready var _blood_sounds = $BloodSounds
+
 export var start_move_speed = 30
 export var gravity = 35.0
 export var drag = 0.01
@@ -18,6 +20,8 @@ func _physics_process(delta):
 	_velocity += -_velocity * drag + Vector3.DOWN * gravity * delta
 	var collision = move_and_collide(_velocity * delta)
 	if collision:
+		if _velocity.length() > 1.0:
+			_blood_sounds.play()
 		var direction = _velocity
 		var normal = collision.normal
 		# r = d-2(d . n)n equation for reflected vector

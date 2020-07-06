@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/monster2_attack.wav-a57a69c10cd0c97715f24896805b2f63.sample"
+
+[deps]
+
+source_file="res://sfx/monster2_attack.wav"
+dest_files=[ "res://.import/monster2_attack.wav-a57a69c10cd0c97715f24896805b2f63.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

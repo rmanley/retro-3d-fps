@@ -115,6 +115,7 @@ func hurt(damage: int, direction: Vector3, position = global_transform.origin + 
 	
 func start_attack():
 	_can_attack = false
+	emit_attack_signal()
 	_animation_player.play("attack")
 	_attack_timer.start()
 	

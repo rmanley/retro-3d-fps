@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/monster2_death.wav-17c4d38a4d86ebb1a3de947d43167674.sample"
+
+[deps]
+
+source_file="res://sfx/monster2_death.wav"
+dest_files=[ "res://.import/monster2_death.wav-17c4d38a4d86ebb1a3de947d43167674.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

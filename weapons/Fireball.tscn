@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://weapons/raw_assets/fireball_sprite.png" type="Texture" id=1]
 [ext_resource path="res://weapons/Fireball.gd" type="Script" id=2]
 [ext_resource path="res://effects/raw_assets/circle32.png" type="Texture" id=3]
+[ext_resource path="res://sfx/fire_ball.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/rocket.wav" type="AudioStream" id=5]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -99,6 +101,19 @@ draw_pass_1 = SubResource( 9 )
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[node name="BlastSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_db = 4.0
+autoplay = true
+bus = "sfx"
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = -1.5
+autoplay = true
+bus = "sfx"
 [connection signal="timeout" from="DestroyAfterHitTimer" to="." method="queue_free"]
+[connection signal="timeout" from="DestroyAfterHitTimer" to="FireSound" method="stop"]
 [connection signal="timeout" from="ShowAfterTimer" to="." method="show"]
 [connection signal="timeout" from="DestroyAfterMissTimer" to="." method="queue_free"]

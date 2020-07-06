@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/CharacterMover.tscn" type="PackedScene" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://sfx/rocket_launcher_fire.wav" type="AudioStream" id=29]
 [ext_resource path="res://sfx/shotgun_fire.wav" type="AudioStream" id=30]
 [ext_resource path="res://sfx/knife_fire.wav" type="AudioStream" id=31]
+[ext_resource path="res://sfx/item_pickup.wav" type="AudioStream" id=32]
+[ext_resource path="res://sfx/health_pickup.wav" type="AudioStream" id=33]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -452,6 +454,7 @@ __meta__ = {
 
 [node name="GunshotSound" type="AudioStreamPlayer3D" parent="Camera/WeaponManager/Weapons/MachineGun"]
 stream = ExtResource( 28 )
+max_db = 1.0
 bus = "sfx"
 
 [node name="OutOfAmmoSound" type="AudioStreamPlayer3D" parent="Camera/WeaponManager/Weapons/MachineGun"]
@@ -520,6 +523,7 @@ __meta__ = {
 
 [node name="GunshotSound" type="AudioStreamPlayer3D" parent="Camera/WeaponManager/Weapons/Shotgun"]
 stream = ExtResource( 30 )
+max_db = 1.0
 bus = "sfx"
 
 [node name="OutOfAmmoSound" type="AudioStreamPlayer3D" parent="Camera/WeaponManager/Weapons/Shotgun"]
@@ -574,6 +578,7 @@ __meta__ = {
 
 [node name="RocketFireSound" type="AudioStreamPlayer3D" parent="Camera/WeaponManager/Weapons/RocketLauncher"]
 stream = ExtResource( 29 )
+max_db = 1.0
 bus = "sfx"
 
 [node name="OutOfAmmoSound" type="AudioStreamPlayer3D" parent="Camera/WeaponManager/Weapons/RocketLauncher"]
@@ -615,6 +620,14 @@ script = ExtResource( 21 )
 [node name="CollisionShape" type="CollisionShape" parent="PickupManager"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1, 0 )
 shape = SubResource( 14 )
+
+[node name="ItemPickedUpSound" type="AudioStreamPlayer" parent="PickupManager"]
+stream = ExtResource( 32 )
+bus = "sfx"
+
+[node name="HealthPickedUpSound" type="AudioStreamPlayer3D" parent="PickupManager"]
+stream = ExtResource( 33 )
+bus = "sfx"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -701,8 +714,8 @@ wait_time = 2.0
 [connection signal="fired" from="Camera/WeaponManager/Weapons/Shotgun" to="Camera/WeaponManager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/Shotgun" to="Camera/WeaponManager/Weapons/Shotgun/GunshotSound" method="play"]
 [connection signal="out_of_ammo" from="Camera/WeaponManager/Weapons/Shotgun" to="Camera/WeaponManager/Weapons/Shotgun/OutOfAmmoSound" method="play"]
-[connection signal="fired" from="Camera/WeaponManager/Weapons/RocketLauncher" to="Camera/WeaponManager/Weapons/RocketLauncher/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponManager/Weapons/RocketLauncher" to="Camera/WeaponManager/Weapons/RocketLauncher/RocketFireSound" method="play"]
+[connection signal="fired" from="Camera/WeaponManager/Weapons/RocketLauncher" to="Camera/WeaponManager/Weapons/RocketLauncher/Graphics/MuzzleFlash" method="flash"]
 [connection signal="out_of_ammo" from="Camera/WeaponManager/Weapons/RocketLauncher" to="Camera/WeaponManager/Weapons/RocketLauncher/OutOfAmmoSound" method="play"]
 [connection signal="dead" from="HealthManager" to="Camera/WeaponManager" method="disable_all_weapons"]
 [connection signal="dead" from="HealthManager" to="CanvasLayer/RestartMessage" method="show"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://characters/enemies/raw_assets/birdmonster/birdmonster.glb" type="PackedScene" id=1]
 [ext_resource path="res://characters/HitBox.tscn" type="PackedScene" id=2]
@@ -7,6 +7,18 @@
 [ext_resource path="res://characters/CharacterMover.tscn" type="PackedScene" id=5]
 [ext_resource path="res://weapons/DamageArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://characters/enemies/AimAtObject.gd" type="Script" id=7]
+[ext_resource path="res://sfx/RandomSounds.gd" type="Script" id=8]
+[ext_resource path="res://sfx/swing2.wav" type="AudioStream" id=9]
+[ext_resource path="res://sfx/swing.wav" type="AudioStream" id=10]
+[ext_resource path="res://sfx/swing3.wav" type="AudioStream" id=11]
+[ext_resource path="res://sfx/monster_hurt3.wav" type="AudioStream" id=12]
+[ext_resource path="res://sfx/monster_death.wav" type="AudioStream" id=13]
+[ext_resource path="res://sfx/monster_hurt1.wav" type="AudioStream" id=14]
+[ext_resource path="res://sfx/monster_hurt2.wav" type="AudioStream" id=15]
+[ext_resource path="res://sfx/monster_death2.wav" type="AudioStream" id=16]
+[ext_resource path="res://sfx/monster_attack1.wav" type="AudioStream" id=17]
+[ext_resource path="res://sfx/monster_attack2.wav" type="AudioStream" id=18]
+[ext_resource path="res://sfx/monster_attack3.wav" type="AudioStream" id=19]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -201,5 +213,89 @@ script = ExtResource( 7 )
 
 [node name="DamageArea" parent="AimAtObject" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.970376 )
+
+[node name="SwingSounds" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+script = ExtResource( 8 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SwingSounds"]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0, 0 )
+stream = ExtResource( 10 )
+unit_db = 20.0
+max_db = 6.0
+bus = "sfx"
+emission_angle_enabled = true
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="SwingSounds"]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0, 0 )
+stream = ExtResource( 9 )
+unit_db = 20.0
+max_db = 6.0
+bus = "sfx"
+emission_angle_enabled = true
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="SwingSounds"]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0, 0 )
+stream = ExtResource( 11 )
+unit_db = 20.0
+max_db = 6.0
+bus = "sfx"
+emission_angle_enabled = true
+
+[node name="AttackSounds" type="Spatial" parent="."]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 1, 0 )
+script = ExtResource( 8 )
+
+[node name="Attack1" type="AudioStreamPlayer3D" parent="AttackSounds"]
+stream = ExtResource( 17 )
+unit_db = 3.0
+bus = "sfx"
+
+[node name="Attack2" type="AudioStreamPlayer3D" parent="AttackSounds"]
+stream = ExtResource( 18 )
+unit_db = 3.0
+bus = "sfx"
+
+[node name="Attack3" type="AudioStreamPlayer3D" parent="AttackSounds"]
+stream = ExtResource( 19 )
+unit_db = 3.0
+bus = "sfx"
+
+[node name="DeathSounds" type="Spatial" parent="."]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 1, 0 )
+script = ExtResource( 8 )
+
+[node name="Death1" type="AudioStreamPlayer3D" parent="DeathSounds"]
+stream = ExtResource( 13 )
+unit_db = 3.0
+bus = "sfx"
+
+[node name="Death2" type="AudioStreamPlayer3D" parent="DeathSounds"]
+stream = ExtResource( 16 )
+unit_db = 3.0
+bus = "sfx"
+
+[node name="HurtSounds" type="Spatial" parent="."]
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 1, 0 )
+script = ExtResource( 8 )
+
+[node name="Hurt1" type="AudioStreamPlayer3D" parent="HurtSounds"]
+stream = ExtResource( 14 )
+unit_db = 3.0
+bus = "sfx"
+
+[node name="Hurt2" type="AudioStreamPlayer3D" parent="HurtSounds"]
+stream = ExtResource( 15 )
+unit_db = 3.0
+bus = "sfx"
+
+[node name="Hurt3" type="AudioStreamPlayer3D" parent="HurtSounds"]
+stream = ExtResource( 12 )
+unit_db = 3.0
+bus = "sfx"
+[connection signal="attack" from="." to="SwingSounds" method="play"]
+[connection signal="attack" from="." to="AttackSounds" method="play"]
+[connection signal="dead" from="HealthManager" to="DeathSounds" method="play"]
+[connection signal="hurt" from="HealthManager" to="HurtSounds" method="play"]
 
 [editable path="Graphics"]

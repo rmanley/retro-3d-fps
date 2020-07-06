@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/monster2_hurt1.wav-d3d35250857e109ce94730ff37f1c8e5.sample"
+
+[deps]
+
+source_file="res://sfx/monster2_hurt1.wav"
+dest_files=[ "res://.import/monster2_hurt1.wav-d3d35250857e109ce94730ff37f1c8e5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

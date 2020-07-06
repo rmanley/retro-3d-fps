@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sfx/blood3.wav" type="AudioStream" id=1]
+[ext_resource path="res://sfx/blood2.wav" type="AudioStream" id=2]
+[ext_resource path="res://sfx/RandomSounds.gd" type="Script" id=3]
+[ext_resource path="res://sfx/blood1.wav" type="AudioStream" id=4]
+
+[node name="BloodSounds" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Blood1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_db = 5.0
+bus = "sfx"
+
+[node name="Blood2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+unit_db = 5.0
+bus = "sfx"
+
+[node name="Blood3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 1 )
+unit_db = 5.0
+bus = "sfx"

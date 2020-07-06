@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blood3.wav-399e04c0abdef4aca8dd045a7a75da92.sample"
+
+[deps]
+
+source_file="res://sfx/blood3.wav"
+dest_files=[ "res://.import/blood3.wav-399e04c0abdef4aca8dd045a7a75da92.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
